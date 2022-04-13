@@ -10,14 +10,16 @@ public class Main {
         Random random = new Random();
         int n = 1234;//random.nextInt(8999) + 1000;
         int k = 0;
-        play(n, k, actionNumber, action);
-        if (action.scam(action.countNumber, actionNumber) == 0 || action.scam(action.countNumber, actionNumber) == n) {
-            actionNumber.clear();
-            System.out.println("You win!");
-        } else {
-            n = action.scam(action.countNumber, actionNumber);
+        while (true) {
+            play(n, k, actionNumber, action);
+            if (action.scam(action.countNumber, actionNumber) == 0 || action.scam(action.countNumber, actionNumber) == n) {
+                actionNumber.clear();
+                System.out.println("You win!");
+                return;
+            } else {
+                n = action.scam(action.countNumber, actionNumber);
+            }
         }
-        play(n, k, actionNumber, action);
 
     }
 
@@ -33,5 +35,6 @@ public class Main {
             System.out.println(action.countNumber);
 
         }
+
     }
 }
